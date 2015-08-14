@@ -14,7 +14,7 @@ import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created by Pyrotemplar on 8/14/2015.
  */
 public class CategoryGridFragment extends android.support.v4.app.Fragment {
 

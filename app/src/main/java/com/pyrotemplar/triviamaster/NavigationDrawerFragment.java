@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+/**
+ * Created by Pyrotemplar on 8/14/2015.
+ */
 public class NavigationDrawerFragment extends android.support.v4.app.Fragment implements NavigationItemAdapter.ClickListener {
 
     public static final String PREF_FILE_NAME = "triviaMasterPref";
