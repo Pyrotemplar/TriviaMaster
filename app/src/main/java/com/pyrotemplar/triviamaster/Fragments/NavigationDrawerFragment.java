@@ -1,7 +1,5 @@
-package com.pyrotemplar.triviamaster;
+package com.pyrotemplar.triviamaster.Fragments;
 
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.pyrotemplar.triviamaster.Activities.HighScoreActivity;
+import com.pyrotemplar.triviamaster.Objects.NavigationItem;
+import com.pyrotemplar.triviamaster.Adapters.NavigationItemAdapter;
+import com.pyrotemplar.triviamaster.Activities.ProfilesActivity;
+import com.pyrotemplar.triviamaster.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,8 +78,8 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment im
         for (int i=0; i <tittles.length && i < icons.length; i++){
             NavigationItem item = new NavigationItem();
 
-            item.iconId = tempIcon;
-            item.tittle = tittles[i];
+            item.setIconId(tempIcon);
+            item.setTittle(tittles[i]);
 
             itemList.add(item);
         }

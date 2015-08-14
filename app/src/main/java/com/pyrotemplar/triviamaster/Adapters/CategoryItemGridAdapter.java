@@ -1,4 +1,4 @@
-package com.pyrotemplar.triviamaster;
+package com.pyrotemplar.triviamaster.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.pyrotemplar.triviamaster.Objects.CategoryItem;
+import com.pyrotemplar.triviamaster.R;
 
 import java.util.ArrayList;
 
@@ -17,6 +20,7 @@ public class CategoryItemGridAdapter extends RecyclerView.Adapter<CategoryItemGr
 
     private ArrayList<CategoryItem> categoryList = new ArrayList<>();
     private LayoutInflater layoutInflater;
+    private ClickListener clickListener;
     public CategoryItemGridAdapter(Context context, ArrayList<CategoryItem> categoryList){
 
         layoutInflater = layoutInflater.from(context);
@@ -33,9 +37,12 @@ public class CategoryItemGridAdapter extends RecyclerView.Adapter<CategoryItemGr
     @Override
     public void onBindViewHolder(ViewHolderCategoryGrid holder, int position) {
         CategoryItem categoryItem = categoryList.get(position);
-        holder.tittleView.setText(categoryItem.tittle);
-        holder.imageView.setImageResource(categoryItem.icon);
+        holder.tittleView.setText(categoryItem.getTittle());
+        holder.imageView.setImageResource(categoryItem.getIcon());
 
+    }
+    public void setClickListener(ClickListener clickListener) {
+        this.clickListener = clickListener;
     }
 
     @Override
@@ -43,16 +50,29 @@ public class CategoryItemGridAdapter extends RecyclerView.Adapter<CategoryItemGr
         return categoryList.size();
     }
 
-    static class ViewHolderCategoryGrid extends RecyclerView.ViewHolder {
+    class ViewHolderCategoryGrid extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tittleView;
         private ImageView imageView;
         public ViewHolderCategoryGrid(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             tittleView = (TextView) itemView.findViewById(R.id.catergoryNameView);
             imageView = (ImageView) itemView.findViewById(R.id.catergoryImage);
 
         }
+
+
+        @Override
+        public void onClick(View view) {
+            if(clickListener!=null){
+                clickListener.itemClicked(view, getAdapterPosition());
+            }
+        }
+    }
+
+    public interface ClickListener {
+        public void itemClicked(View view, int position);
     }
 }
 

@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <fragment android:id="@+id/fragment_category_grid"
-                android:name="com.pyrotemplar.triviamaster.CategoryGridFragment"
+                android:name="com.pyrotemplar.triviamaster.Fragments.CategoryGridFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:layout="@layout/fragment_category_grid" />
@@ -28,7 +28,7 @@
 
         <fragment
             android:id="@+id/fragment_navigation_drawer"
-            android:name="com.pyrotemplar.triviamaster.NavigationDrawerFragment"
+            android:name="com.pyrotemplar.triviamaster.Fragments.NavigationDrawerFragment"
             android:layout_width="@dimen/navigationDrawerWidth"
             android:layout_height="match_parent"
             android:layout_gravity="start"

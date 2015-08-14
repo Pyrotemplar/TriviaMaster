@@ -1,4 +1,4 @@
-package com.pyrotemplar.triviamaster;
+package com.pyrotemplar.triviamaster.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.pyrotemplar.triviamaster.Objects.NavigationItem;
+import com.pyrotemplar.triviamaster.R;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +27,7 @@ public class NavigationItemAdapter extends RecyclerView.Adapter<NavigationItemAd
 
     public NavigationItemAdapter(Context context, List<NavigationItem> items) {
 
+        this.context = context;
         inflater = LayoutInflater.from(context);
         this.items = items;
 
@@ -41,8 +45,8 @@ public class NavigationItemAdapter extends RecyclerView.Adapter<NavigationItemAd
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         NavigationItem item = items.get(position);
-        holder.tittle.setText(item.tittle);
-        holder.icon.setImageResource(item.iconId);
+        holder.tittle.setText(item.getTittle());
+        holder.icon.setImageResource(item.getIconId());
     }
 
     public void setClickListener(ClickListener clickListener) {
@@ -69,17 +73,15 @@ public class NavigationItemAdapter extends RecyclerView.Adapter<NavigationItemAd
         }
 
         @Override
-        public void onClick(View v) {
+        public void onClick(View view) {
 
-            if(clickListener!=null){
-                clickListener.itemClicked(v, getAdapterPosition());
+            if (clickListener != null) {
+                clickListener.itemClicked(view, getAdapterPosition());
             }
         }
-
     }
 
     public interface ClickListener {
-
         public void itemClicked(View view, int position);
     }
 }

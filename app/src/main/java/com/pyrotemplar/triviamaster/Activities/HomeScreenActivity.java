@@ -1,4 +1,4 @@
-package com.pyrotemplar.triviamaster;
+package com.pyrotemplar.triviamaster.Activities;
 
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
@@ -7,6 +7,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.pyrotemplar.triviamaster.FetchTriviaTask;
+import com.pyrotemplar.triviamaster.Fragments.CategoryGridFragment;
+
+import com.pyrotemplar.triviamaster.Fragments.NavigationDrawerFragment;
+import com.pyrotemplar.triviamaster.R;
 
 /**
  * Created by Pyrotemplar on 8/14/2015.
@@ -16,6 +23,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
 
     Toolbar toolbar;
+    CategoryGridFragment CategoryGrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +35,12 @@ public class HomeScreenActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        CategoryGridFragment CategoryGrid = (CategoryGridFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_category_grid);
+        CategoryGrid = (CategoryGridFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_category_grid);
 
         drawerFragment.setUp(R.id.fragment_navigation_drawer,(DrawerLayout)findViewById(R.id.drawer_layout), toolbar);
+
+        FetchTriviaTask test = new FetchTriviaTask(this);
+        test.execute(getResources().getString(R.string.QuizQuestionByCategory), "26", "10", "1");
 
     }
 
@@ -55,4 +66,21 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+                String result=data.getStringExtra("test");
+                Toast.makeText(HomeScreenActivity.this, result, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, FinalScoreActivity.class));
+
+
+            }
+            if (resultCode == RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }//onActivityResult
 }

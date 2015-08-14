@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pyrotemplar.triviamaster" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".HomeScreenActivity"
+            android:name=".Activities.HomeScreenActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,25 +19,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HighScoreActivity"
+            android:name=".Activities.HighScoreActivity"
             android:label="@string/title_activity_sub" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pyrotemplar.triviamaster.HomeScreenActivity" />
+                android:value=".Activities.HomeScreenActivity" />
         </activity>
         <activity
-            android:name=".ProfilesActivity"
+            android:name=".Activities.ProfilesActivity"
             android:label="@string/title_activity_profiles" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pyrotemplar.triviamaster.HomeScreenActivity" />
+                android:value=".Activities.HomeScreenActivity" />
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activities.SettingsActivity"
             android:label="@string/title_activity_settings" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pyrotemplar.triviamaster.HomeScreenActivity" />
+                android:value=".Activities.HomeScreenActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.QuestionsActivity"
+            android:label="@string/title_activity_questions" >
+        </activity>
+        <activity
+            android:name=".Activities.FinalScoreActivity"
+            android:label="@string/title_activity_final_score" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.HomeScreenActivity" />
         </activity>
     </application>
 

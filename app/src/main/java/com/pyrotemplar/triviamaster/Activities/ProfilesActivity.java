@@ -1,4 +1,4 @@
-package com.pyrotemplar.triviamaster;
+package com.pyrotemplar.triviamaster.Activities;
 
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -7,20 +7,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.pyrotemplar.triviamaster.R;
 
 /**
  * Created by Pyrotemplar on 8/14/2015.
  */
-public class HighScoreActivity extends AppCompatActivity {
 
+public class ProfilesActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hightscore);
-
+        setContentView(R.layout.activity_profiles);
         toolbar = (Toolbar) findViewById(R.id.app_bar);
 
         setSupportActionBar(toolbar);
@@ -32,7 +32,7 @@ public class HighScoreActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_high_score, menu);
+        getMenuInflater().inflate(R.menu.menu_profiles, menu);
         return true;
     }
 
