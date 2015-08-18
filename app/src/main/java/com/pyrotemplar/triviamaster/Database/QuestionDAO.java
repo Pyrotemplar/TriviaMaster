@@ -42,16 +42,16 @@ public class QuestionDAO {
 
     public int AddQuestion(Question question) {
 
-        if (question != null && !CheckIsDataAlreadyInDBorNot(DatabaseHelper.QUESTION_TABLE, DatabaseHelper.QUESTION_ID, question.getQuestion_id())) {
+        if (question != null && !CheckIsDataAlreadyInDBorNot(DatabaseHelper.QUESTION_TABLE, DatabaseHelper.QUESTION_ID, question.getQuestionID())) {
             ContentValues values = new ContentValues();
-            values.put(DatabaseHelper.QUESTION_ID, question.getQuestion_id());
-            values.put(DatabaseHelper.QUESTION_TEXT, question.getQuestion_Text());
-            values.put(DatabaseHelper.QUESTION_OPTION1, question.getQuestion_option1());
-            values.put(DatabaseHelper.QUESTION_OPTION2, question.getQuestion_option2());
-            values.put(DatabaseHelper.QUESTION_OPTION3, question.getQuestion_option3());
-            values.put(DatabaseHelper.QUESTION_OPTION4, question.getQuestion_option4());
-            values.put(DatabaseHelper.QUESTION_ANSWER, question.getQuestion_answer());
-            values.put(DatabaseHelper.CATEGORY_ID, question.getCategory_id());
+            values.put(DatabaseHelper.QUESTION_ID, question.getQuestionID());
+            values.put(DatabaseHelper.QUESTION_TEXT, question.getQuestionText());
+            values.put(DatabaseHelper.QUESTION_OPTION1, question.getQuestionOption1());
+            values.put(DatabaseHelper.QUESTION_OPTION2, question.getQuestionOption2());
+            values.put(DatabaseHelper.QUESTION_OPTION3, question.getQuestionOption3());
+            values.put(DatabaseHelper.QUESTION_OPTION4, question.getQuestionOption4());
+            values.put(DatabaseHelper.QUESTION_ANSWER, question.getQuestionAnswer());
+            values.put(DatabaseHelper.CATEGORY_ID, question.getCategoryID());
 
 
             database.insert(DatabaseHelper.QUESTION_TABLE, null, values);
@@ -61,9 +61,9 @@ public class QuestionDAO {
         }
     }
 
-    public List<Question> getListOfQuestions(int category_id, int numberOfQuestions) {
+    public ArrayList<Question> getListOfQuestions(int category_id, int numberOfQuestions) {
 
-        List<Question> listOfQuestions = new ArrayList<>();
+        ArrayList<Question> listOfQuestions = new ArrayList<>();
 
         String whereClause = DatabaseHelper.CATEGORY_ID + " = ?";
 
@@ -85,14 +85,14 @@ public class QuestionDAO {
     private Question CursorToQuestion(Cursor cursor) {
 
         Question question = new Question();
-        question.setQuestion_id(String.valueOf(cursor.getInt(0)));
-        question.setQuestion_Text(cursor.getString(1));
-        question.setQuestion_option1(cursor.getString(2));
-        question.setQuestion_option2(cursor.getString(3));
-        question.setQuestion_option3(cursor.getString(4));
-        question.setQuestion_option4(cursor.getString(5));
-        question.setQuestion_answer(cursor.getString(6));
-        question.setCategory_id(cursor.getString(7));
+        question.setQuestionID(String.valueOf(cursor.getInt(0)));
+        question.setQuestionText(cursor.getString(1));
+        question.setQuestionOption1(cursor.getString(2));
+        question.setQuestionOption2(cursor.getString(3));
+        question.setQuestionOption3(cursor.getString(4));
+        question.setQuestionOption4(cursor.getString(5));
+        question.setQuestionAnswer(cursor.getString(6));
+        question.setCategoryID(cursor.getString(7));
 
         return question;
 

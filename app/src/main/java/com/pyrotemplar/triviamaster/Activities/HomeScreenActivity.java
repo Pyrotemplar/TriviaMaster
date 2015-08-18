@@ -5,6 +5,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.pyrotemplar.triviamaster.R;
  */
 
 public class HomeScreenActivity extends AppCompatActivity {
+    private final String LOG_TAG = HomeScreenActivity.class.getSimpleName();
 
 
     Toolbar toolbar;
@@ -37,10 +39,10 @@ public class HomeScreenActivity extends AppCompatActivity {
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         CategoryGrid = (CategoryGridFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_category_grid);
 
-        drawerFragment.setUp(R.id.fragment_navigation_drawer,(DrawerLayout)findViewById(R.id.drawer_layout), toolbar);
+        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
         FetchTriviaTask test = new FetchTriviaTask(this);
-        test.execute(getResources().getString(R.string.QuizQuestionByCategory), "26", "10", "1");
+        test.execute(getResources().getString(R.string.CategoryListURL), "26", "10", "1");
 
     }
 
@@ -71,12 +73,16 @@ public class HomeScreenActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
-            if(resultCode == RESULT_OK){
-                String result=data.getStringExtra("test");
-                Toast.makeText(HomeScreenActivity.this, result, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, FinalScoreActivity.class));
+            if (resultCode == RESULT_OK) {
 
-
+                Log.d(LOG_TAG, "Score " + data.getIntExtra("score", 0));
+                Log.d(LOG_TAG, "numberOfQuestions " + data.getIntExtra("numberOfQuestions", 0));
+                Intent intent = new Intent(this, FinalScoreActivity.class);
+                intent.putParcelableArrayListExtra("finalScoreItemsList", data.getParcelableArrayListExtra("finalScoreItemsList"));
+                intent.putExtra("score", data.getIntExtra("score", 0));
+                intent.putExtra("numberOfQuestions", data.getIntExtra("numberOfQuestions", 0));
+                Toast.makeText(HomeScreenActivity.this, "new intent from home to final score", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
             }
             if (resultCode == RESULT_CANCELED) {
                 //Write your code if there's no result

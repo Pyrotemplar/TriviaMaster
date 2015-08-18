@@ -1,74 +1,96 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.pyrotemplar.triviamaster.Activities.QuestionsActivity">
 
-
-    <TextView
-        android:id="@+id/questionTextView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:background="#ccc"
-        android:text="New Text" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1">
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="3"
-        android:id="@+id/answerGroup">
+        <TextView
+            android:id="@+id/questionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        <RadioButton
-            android:id="@+id/answerButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:background="#ccc"
-            android:text="New RadioButton" />
+            android:text="New Text"
+            android:textColor="@color/accent_material_light"
+            android:textSize="@dimen/questTextSize" />
+    </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/answerButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ccc"
-            android:text="New RadioButton" />
-
-        <RadioButton
-            android:id="@+id/answerButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ccc"
-            android:text="New RadioButton" />
-
-        <RadioButton
-            android:id="@+id/answerButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ccc"
-            android:text="New RadioButton" />
-
-    </RadioGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2.5">
+        android:layout_above="@+id/buttonLayout"
+        android:layout_weight="1">
+
+        <RadioGroup
+            android:id="@+id/answerGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true">
+
+            <RadioButton
+                android:id="@+id/answerButton1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ccc"
+                android:text="New RadioButton"
+                android:textColor="@color/accent_material_light" />
+
+            <RadioButton
+                android:id="@+id/answerButton2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ccc"
+                android:text="New RadioButton"
+                android:textColor="@color/accent_material_light" />
+
+            <RadioButton
+                android:id="@+id/answerButton3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ccc"
+                android:text="New RadioButton"
+                android:textColor="@color/accent_material_light" />
+
+            <RadioButton
+                android:id="@+id/answerButton4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ccc"
+                android:text="New RadioButton"
+                android:textColor="@color/accent_material_light" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
         <Button
             android:id="@+id/skipButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Skip" />
 
         <Button
             android:id="@+id/submitButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Submit" />
     </LinearLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

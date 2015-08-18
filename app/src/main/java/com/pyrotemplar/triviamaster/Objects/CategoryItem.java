@@ -4,15 +4,15 @@ package com.pyrotemplar.triviamaster.Objects;
  * Created by Pyrotemplar on 8/14/2015.
  */
 public class CategoryItem {
-    private String tittle;
+    private String tidttle;
     private int icon;
 
     public String getTittle() {
-        return tittle;
+        return tidttle;
     }
 
     public void setTittle(String tittle) {
-        this.tittle = tittle;
+        this.tidttle = tittle;
     }
 
     public int getIcon() {

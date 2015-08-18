@@ -1,82 +1,87 @@
 package com.pyrotemplar.triviamaster.Objects;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Pyrotemplar on 8/11/2015.
  */
-public class Question {
-    String question_id;
-    String question_Text;
-    String question_option1;
-    String question_option2;
-    String question_option3;
-    String question_option4;
-    String question_answer;
-    String category_id;
+public class Question{
+    String questionID;
+    String questionText;
+    String questionOption1;
+    String questionOption2;
+    String questionOption3;
+    String questionOption4;
+    String questionAnswer;
+    String categoryID;
 
-    public Question() {
+    public Question(){
+
     }
 
-    public String getQuestion_id() {
-        return question_id;
+    public String getQuestionID() {
+        return questionID;
     }
 
-    public void setQuestion_id(String question_id) {
-        this.question_id = question_id;
+    public void setQuestionID(String questionID) {
+        this.questionID = questionID;
     }
 
-    public String getQuestion_Text() {
-        return question_Text;
+    public String getQuestionText() {
+        return questionText;
     }
 
-    public void setQuestion_Text(String question_Text) {
-        this.question_Text = question_Text;
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
     }
 
-    public String getQuestion_option1() {
-        return question_option1;
+    public String getQuestionOption1() {
+        return questionOption1;
     }
 
-    public void setQuestion_option1(String question_option1) {
-        this.question_option1 = question_option1;
+    public void setQuestionOption1(String questionOption1) {
+        this.questionOption1 = questionOption1;
     }
 
-    public String getQuestion_option2() {
-        return question_option2;
+    public String getQuestionOption2() {
+        return questionOption2;
     }
 
-    public void setQuestion_option2(String question_option2) {
-        this.question_option2 = question_option2;
+    public void setQuestionOption2(String questionOption2) {
+        this.questionOption2 = questionOption2;
     }
 
-    public String getQuestion_option3() {
-        return question_option3;
+    public String getQuestionOption3() {
+        return questionOption3;
     }
 
-    public void setQuestion_option3(String question_option3) {
-        this.question_option3 = question_option3;
+    public void setQuestionOption3(String questionOption3) {
+        this.questionOption3 = questionOption3;
     }
 
-    public String getQuestion_option4() {
-        return question_option4;
+    public String getQuestionOption4() {
+        return questionOption4;
     }
 
-    public void setQuestion_option4(String question_option4) {
-        this.question_option4 = question_option4;
+    public void setQuestionOption4(String questionOption4) {
+        this.questionOption4 = questionOption4;
     }
 
-    public String getQuestion_answer() {
-        return question_answer;
+    public String getQuestionAnswer() {
+        return questionAnswer;
     }
 
-    public void setQuestion_answer(String question_answer) {
-        this.question_answer = question_answer;
+    public void setQuestionAnswer(String questionAnswer) {
+        this.questionAnswer = questionAnswer;
     }
 
-    public String getCategory_id() {
-        return category_id;
+
+    public String getCategoryID() {
+        return categoryID;
     }
 
-    public void setCategory_id(String category_id) {
-        this.category_id = category_id;
+    public void setCategoryID(String categoryID) {
+        this.categoryID = categoryID;
     }
 }

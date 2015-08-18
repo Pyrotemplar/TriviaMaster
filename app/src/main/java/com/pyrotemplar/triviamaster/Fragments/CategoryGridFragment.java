@@ -54,7 +54,7 @@ public class CategoryGridFragment extends android.support.v4.app.Fragment implem
 
         int[] icons = {R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher};
         int tempIcon = R.drawable.ic_launcher;
-        String[] tittles = {"History", "Math", "Science", "Music", "Video Games", "Computers", "Entertainment", "Animals", "Food"};
+        String[] tittles = {"History", "Math", "Science", "Music", "Video Games", "Computers", "Entertainment", "Animals", "Food", "Beer"};
 
         for (int i = 0; i < tittles.length; i++) {
             CategoryItem item = new CategoryItem();

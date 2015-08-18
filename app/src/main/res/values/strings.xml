@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Trivia Master</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_sub">High Score</string>
+    <string name="title_activity_high_score">High Score</string>
     <string name="title_activity_final_score">Final Score</string>
     <string name="title_activity_profiles">Profile</string>
     <string name="title_activity_settings">Settings</string>
@@ -11,10 +11,10 @@
 
     //api URLS
     <string name="CategoryListURL">https://pareshchouhan-trivia-v1.p.mashape.com/v1/getCategoryList</string>
-    <string name="AllQuizQuestions">https://pareshchouhan-trivia-v1.p.mashape.com/v1/getAllQuizQuestions</string>
-    <string name="RandomQuestion">https://pareshchouhan-trivia-v1.p.mashape.com/v1/getRandomQuestion</string>
-    <string name="QuestionCount">https://pareshchouhan-trivia-v1.p.mashape.com/v1/questionCount</string>
-    <string name="QuizQuestionByCategory">https://pareshchouhan-trivia-v1.p.mashape.com/v1/getQuizQuestionsByCategory</string>
+    <string name="AllQuizQuestionsURL">https://pareshchouhan-trivia-v1.p.mashape.com/v1/getAllQuizQuestions</string>
+    <string name="RandomQuestionURL">https://pareshchouhan-trivia-v1.p.mashape.com/v1/getRandomQuestion</string>
+    <string name="QuestionCountURL">https://pareshchouhan-trivia-v1.p.mashape.com/v1/questionCount</string>
+    <string name="QuizQuestionByCategoryURL">https://pareshchouhan-trivia-v1.p.mashape.com/v1/getQuizQuestionsByCategory</string>
 
     // API Key
     <string name="API_KEY_TESTING">0QrvM2M33PmshW2wpUOr921WTzpup1p172AjsnYcLMnBfk9KhJ</string>

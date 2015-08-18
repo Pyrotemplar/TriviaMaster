@@ -8,5 +8,30 @@
         android:id="@+id/app_bar"
         layout="@layout/app_bar" />
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/app_bar"
+        android:id="@+id/finalScoreQuestionList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="108dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/button2"
+        android:layout_alignTop="@+id/button"
+        android:layout_toRightOf="@+id/button"
+        android:layout_toEndOf="@+id/button" />
+
 
 </RelativeLayout>

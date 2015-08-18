@@ -35,8 +35,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + " integer not null);";
 
     private static DatabaseHelper instance;
+
     public synchronized static DatabaseHelper getInstance(Context context) {
-        if(instance == null) {
+        if (instance == null) {
             instance = new DatabaseHelper(context.getApplicationContext());
         }
         return instance;
@@ -55,8 +56,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        Log.d(LOG_TAG,"Upgrading database from version " + oldVersion + " to "
-                        + newVersion + ", which will destroy all old data");
+        Log.d(LOG_TAG, "Upgrading database from version " + oldVersion + " to "
+                + newVersion + ", which will destroy all old data");
 
         db.execSQL("DROP TABLE IF EXISTS " + QUESTION_TABLE);
         onCreate(db);

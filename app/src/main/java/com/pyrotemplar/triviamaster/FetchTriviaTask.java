@@ -27,6 +27,7 @@ public class FetchTriviaTask extends AsyncTask<String, Void, ArrayList<Question>
     private final String LOG_TAG = FetchTriviaTask.class.getSimpleName();
     private QuestionDAO questionDAO;
     private Context context;
+    private String URL;
 
     public FetchTriviaTask(Context context) {
         this.context = context;
@@ -34,7 +35,7 @@ public class FetchTriviaTask extends AsyncTask<String, Void, ArrayList<Question>
 
     @Override
     protected ArrayList doInBackground(String... params) {
-        final String URL = params[0];
+        URL = params[0];
         final String CATEGORY_ID = params[1];
         final String LIMIT = params[2];
         final String PAGE = params[3];
@@ -51,9 +52,9 @@ public class FetchTriviaTask extends AsyncTask<String, Void, ArrayList<Question>
         try {
 
             Uri builtUri = Uri.parse(URL).buildUpon()
-                    .appendQueryParameter("categoryId", params[1])
-                    .appendQueryParameter("limit", params[2])
-                    .appendQueryParameter("page", params[3])
+                    .appendQueryParameter("categoryId", CATEGORY_ID)
+                    .appendQueryParameter("limit", LIMIT)
+                    .appendQueryParameter("page", PAGE)
                     .build();
 
             url = new URL(builtUri.toString());
@@ -64,7 +65,7 @@ public class FetchTriviaTask extends AsyncTask<String, Void, ArrayList<Question>
             // Create the request to OpenWeatherMap, and open the connection
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-            urlConnection.setRequestProperty("X-Mashape-Key", "0QrvM2M33PmshW2wpUOr921WTzpup1p172AjsnYcLMnBfk9KhJ");
+            urlConnection.setRequestProperty("X-Mashape-Key", context.getResources().getString(R.string.API_KEY_TESTING));
             urlConnection.setRequestProperty("Accept", "application/json");
             urlConnection.connect();
 
@@ -122,6 +123,7 @@ public class FetchTriviaTask extends AsyncTask<String, Void, ArrayList<Question>
 
     @Override
     protected void onPostExecute(ArrayList<Question> result) {
+
         if (result != null) {
             questionDAO = new QuestionDAO(context);
             questionDAO.open();
@@ -129,8 +131,6 @@ public class FetchTriviaTask extends AsyncTask<String, Void, ArrayList<Question>
             for (Question q : result) {
                 questionDAO.AddQuestion(q);
             }
-
-
         }
     }
 
@@ -144,14 +144,14 @@ public class FetchTriviaTask extends AsyncTask<String, Void, ArrayList<Question>
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Question question = new Question();
-                question.setQuestion_id(jsonObject.getString("id"));
-                question.setQuestion_Text(jsonObject.getString("q_text"));
-                question.setQuestion_option1(jsonObject.getString("q_options_1"));
-                question.setQuestion_option2(jsonObject.getString("q_options_2"));
-                question.setQuestion_option3(jsonObject.getString("q_options_3"));
-                question.setQuestion_option4(jsonObject.getString("q_options_4"));
-                question.setQuestion_answer(jsonObject.getString("q_correct_option"));
-                question.setCategory_id(jsonObject.getString("categ_id"));
+                question.setQuestionID(jsonObject.getString("id"));
+                question.setQuestionText(jsonObject.getString("q_text"));
+                question.setQuestionOption1(jsonObject.getString("q_options_1"));
+                question.setQuestionOption2(jsonObject.getString("q_options_2"));
+                question.setQuestionOption3(jsonObject.getString("q_options_3"));
+                question.setQuestionOption4(jsonObject.getString("q_options_4"));
+                question.setQuestionAnswer(jsonObject.getString("q_correct_option"));
+                question.setCategoryID(jsonObject.getString("categ_id"));
                 listOfQuestion.add(question);
             } catch (JSONException e) {
                 Log.d(LOG_TAG, "Error parsing JsonArray", e);
