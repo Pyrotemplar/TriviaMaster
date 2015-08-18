@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.pyrotemplar.triviamaster.Objects.FinalScoreItemTemp;
 import com.pyrotemplar.triviamaster.R;
 
 import java.util.ArrayList;
@@ -14,10 +15,10 @@ import java.util.ArrayList;
  * Created by Pyrotemplar on 8/17/2015.
  */
 public class FinalScoreListAdapter extends RecyclerView.Adapter<FinalScoreListAdapter.ViewHolder> {
-    ArrayList<FinalScoreItem> finalScoreItemsList = new ArrayList<>();
-    FinalScoreItem finalScoreItem;
+    ArrayList<FinalScoreItemTemp> finalScoreItemsList = new ArrayList<>();
+    FinalScoreItemTemp finalScoreItem;
 
-    public FinalScoreListAdapter(ArrayList<FinalScoreItem> finalScoreItems) {
+    public FinalScoreListAdapter(ArrayList<FinalScoreItemTemp> finalScoreItems) {
 
         finalScoreItemsList = finalScoreItems;
     }
