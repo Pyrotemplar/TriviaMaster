@@ -7,28 +7,10 @@
     tools:context="com.pyrotemplar.triviamaster.Fragments.NavigationDrawerFragment">
 
 
-    <LinearLayout
-
-        android:id="@+id/containerDrawerImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
-
-            android:id="@+id/imageView"
-            android:layout_width="280dp"
-            android:layout_height="140dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/drawer_header_image" />
-    </LinearLayout>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/drawerList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/containerDrawerImage">
+        android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
 

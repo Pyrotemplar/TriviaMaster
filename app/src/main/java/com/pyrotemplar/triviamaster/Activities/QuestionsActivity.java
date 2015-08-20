@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pyrotemplar.triviamaster.Database.QuestionDAO;
+import com.pyrotemplar.triviamaster.Objects.FinalQuestionItem;
 import com.pyrotemplar.triviamaster.Objects.Question;
 import com.pyrotemplar.triviamaster.R;
 
@@ -27,14 +28,14 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     RadioButton answerButton4;
     Button submitButton;
     Button skipButton;
-    int numberOfQuestions = 3;
+    int numberOfQuestions = 10;
     int currentQuestion;
     int score;
 
     QuestionDAO questionDAO;
     ArrayList<Question> listOfQuestions;
     Question question;
-    ArrayList<FinalScoreItem> finalScoreItemsList = new ArrayList<FinalScoreItem>();
+    ArrayList<FinalQuestionItem> finalQuestionItemsList = new ArrayList<FinalQuestionItem>();
 
 
     @Override
@@ -61,6 +62,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         currentQuestion = 0;
         score = 0;
         NewQuestion(currentQuestion);
+
         updateUI();
 
     }
@@ -68,20 +70,20 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     private void questionLogic() {
         String correctAnswer = "";
         String userAnswer = "";
-      FinalScoreItem finalScoreItem = new FinalScoreItem();
-        if (currentQuestion < numberOfQuestions) {
-            int userSelection = answerGroup.getCheckedRadioButtonId();
-            if (userSelection == answerButton1.getId()) {
-                userAnswer = answerButton1.getText().toString();
-            } else if (userSelection == answerButton2.getId()) {
-                userAnswer = answerButton2.getText().toString();
-            } else if (userSelection == answerButton3.getId()) {
-                userAnswer = answerButton3.getText().toString();
-            } else if (userSelection == answerButton4.getId()) {
-                userAnswer = answerButton4.getText().toString();
-            } else {
-                userAnswer = "";
-            }
+        FinalQuestionItem finalQuestionItem = new FinalQuestionItem();
+
+        int userSelection = answerGroup.getCheckedRadioButtonId();
+        if (userSelection == answerButton1.getId()) {
+            userAnswer = answerButton1.getText().toString();
+        } else if (userSelection == answerButton2.getId()) {
+            userAnswer = answerButton2.getText().toString();
+        } else if (userSelection == answerButton3.getId()) {
+            userAnswer = answerButton3.getText().toString();
+        } else if (userSelection == answerButton4.getId()) {
+            userAnswer = answerButton4.getText().toString();
+        } else {
+            userAnswer = "";
+        }
 
 
         switch (Integer.parseInt(question.getQuestionAnswer())) {
@@ -102,16 +104,13 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         if (correctAnswer.equals(userAnswer)) {
             score++;
         }
-        finalScoreItem.setRightAnswer(correctAnswer);
-        finalScoreItem.setUserAnswer(userAnswer);
-        finalScoreItem.setQuestionText(question.getQuestionText());
-        finalScoreItemsList.add(finalScoreItem);
-
-        NewQuestion(currentQuestion);
-
-        currentQuestion++;
-        }
-        else {
+        finalQuestionItem.setRightAnswer(correctAnswer);
+        finalQuestionItem.setUserAnswer(userAnswer);
+        finalQuestionItem.setQuestionText(question.getQuestionText());
+        finalQuestionItemsList.add(finalQuestionItem);
+        if (currentQuestion < numberOfQuestions) {
+            NewQuestion(currentQuestion);
+        } else {
             finalScore();
         }
     }
@@ -151,12 +150,13 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         Intent intent = new Intent();
         intent.putExtra("score", score);
         intent.putExtra("numberOfQuestions", numberOfQuestions);
-        intent.putParcelableArrayListExtra("finalScoreItemsList", finalScoreItemsList);
+        intent.putParcelableArrayListExtra("finalQuestionItemsList", finalQuestionItemsList);
         setResult(RESULT_OK, intent);
         finish();
     }
 
     private void NewQuestion(int position) {
         question = listOfQuestions.get(position);
+        currentQuestion++;
     }
 }

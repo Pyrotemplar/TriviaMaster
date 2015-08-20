@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.pyrotemplar.triviamaster.Objects.FinalScoreItemTemp;
+import com.pyrotemplar.triviamaster.Objects.FinalQuestionItem;
 import com.pyrotemplar.triviamaster.R;
 
 import java.util.ArrayList;
@@ -15,12 +15,12 @@ import java.util.ArrayList;
  * Created by Pyrotemplar on 8/17/2015.
  */
 public class FinalScoreListAdapter extends RecyclerView.Adapter<FinalScoreListAdapter.ViewHolder> {
-    ArrayList<FinalScoreItemTemp> finalScoreItemsList = new ArrayList<>();
-    FinalScoreItemTemp finalScoreItem;
+    ArrayList<FinalQuestionItem> finalQuestionItemsList = new ArrayList<>();
+    FinalQuestionItem finalQuestionItem;
 
-    public FinalScoreListAdapter(ArrayList<FinalScoreItemTemp> finalScoreItems) {
+    public FinalScoreListAdapter(ArrayList<FinalQuestionItem> finalQuestionItems) {
 
-        finalScoreItemsList = finalScoreItems;
+        finalQuestionItemsList = finalQuestionItems;
     }
 
     @Override
@@ -33,16 +33,16 @@ public class FinalScoreListAdapter extends RecyclerView.Adapter<FinalScoreListAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        finalScoreItem = finalScoreItemsList.get(position);
+        finalQuestionItem = finalQuestionItemsList.get(position);
 
-        holder.questionItemView.setText(finalScoreItem.getQuestionText());
-        holder.answerItemView.setText(finalScoreItem.getRightAnswer());
-        holder.userAnswerItemView.setText(finalScoreItem.getUserAnswer());
+        holder.questionItemView.setText(finalQuestionItem.getQuestionText());
+        holder.answerItemView.setText(finalQuestionItem.getRightAnswer());
+        holder.userAnswerItemView.setText(finalQuestionItem.getUserAnswer());
     }
 
     @Override
     public int getItemCount() {
-        return finalScoreItemsList.size();
+        return finalQuestionItemsList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

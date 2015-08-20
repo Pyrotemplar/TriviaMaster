@@ -149,15 +149,18 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment im
 
         switch (position){
             case 0:
-                mDrawerLayout.closeDrawers();
-                break;
-            case 1:
-                startActivity(new Intent(getActivity(), HighScoreActivity.class));
-                break;
-            case 2:
                 startActivity(new Intent(getActivity(), ProfilesActivity.class));
                 break;
+            case 1:
+                mDrawerLayout.closeDrawers();
+                break;
+            case 2:
+                startActivity(new Intent(getActivity(), HighScoreActivity.class));
+                break;
             case 3:
+                startActivity(new Intent(getActivity(), ProfilesActivity.class));
+                break;
+            case 4:
                 getActivity().finish();
                 break;
         }

@@ -6,18 +6,18 @@ import android.os.Parcelable;
 /**
  * Created by Pyrotemplar on 8/17/2015.
  */
-public class FinalScoreItemTemp implements Parcelable {
+public class FinalQuestionItem implements Parcelable {
     String questionText;
     String rightAnswer;
     String userAnswer;
 
-    public FinalScoreItemTemp() {
+    public FinalQuestionItem() {
     }
 
     // Your existing methods go here. (There is no need for me to re-write them.)
 
     // The following methods that are required for using Parcelable
-    private FinalScoreItemTemp(Parcel in) {
+    private FinalQuestionItem(Parcel in) {
         // This order must match the order in writeToParcel()
         questionText = in.readString();
         rightAnswer = in.readString();
@@ -43,13 +43,13 @@ public class FinalScoreItemTemp implements Parcelable {
     }
 
     // Just cut and paste this for now
-    public static final Parcelable.Creator<FinalScoreItemTemp> CREATOR = new Parcelable.Creator<FinalScoreItemTemp>() {
-        public FinalScoreItemTemp createFromParcel(Parcel in) {
-            return new FinalScoreItemTemp(in);
+    public static final Parcelable.Creator<FinalQuestionItem> CREATOR = new Parcelable.Creator<FinalQuestionItem>() {
+        public FinalQuestionItem createFromParcel(Parcel in) {
+            return new FinalQuestionItem(in);
         }
 
-        public FinalScoreItemTemp[] newArray(int size) {
-            return new FinalScoreItemTemp[size];
+        public FinalQuestionItem[] newArray(int size) {
+            return new FinalQuestionItem[size];
         }
     };
 

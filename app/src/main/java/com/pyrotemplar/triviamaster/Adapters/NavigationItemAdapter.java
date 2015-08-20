@@ -17,8 +17,10 @@ import java.util.List;
 /**
  * Created by Pyrotemplar on 8/13/2015.
  */
-public class NavigationItemAdapter extends RecyclerView.Adapter<NavigationItemAdapter.MyViewHolder> {
+public class NavigationItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_ITEM = 1;
     private LayoutInflater inflater;
     List<NavigationItem> items = Collections.emptyList();
     private Context context;
@@ -34,19 +36,40 @@ public class NavigationItemAdapter extends RecyclerView.Adapter<NavigationItemAd
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.navigation_item_row, parent, false);
-        MyViewHolder holder = new MyViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view;
+        if (viewType == TYPE_HEADER) {
+            view = inflater.inflate(R.layout.navigation_drawer_header, parent, false);
+            HeaderHolder holder = new HeaderHolder(view);
+            return holder;
+        } else {
+            view = inflater.inflate(R.layout.navigation_item_row, parent, false);
+            ItemHolder holder = new ItemHolder(view);
+            return holder;
 
-        return holder;
+        }
+
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public int getItemViewType(int position) {
 
-        NavigationItem item = items.get(position);
-        holder.tittle.setText(item.getTittle());
-        holder.icon.setImageResource(item.getIconId());
+        return position == 0 ? TYPE_HEADER : TYPE_ITEM;
+
+
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        if (holder instanceof HeaderHolder) {
+
+        } else {
+            ItemHolder itemHolder = (ItemHolder) holder;
+            NavigationItem item = items.get(position-1);
+            itemHolder.tittle.setText(item.getTittle());
+            itemHolder.icon.setImageResource(item.getIconId());
+        }
     }
 
     public void setClickListener(ClickListener clickListener) {
@@ -56,16 +79,16 @@ public class NavigationItemAdapter extends RecyclerView.Adapter<NavigationItemAd
     @Override
     public int getItemCount() {
 
-        return items.size();
+        return items.size()+1;
 
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tittle;
         ImageView icon;
 
-        public MyViewHolder(View itemView) {
+        public ItemHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             tittle = (TextView) itemView.findViewById(R.id.navigation_item_text);
@@ -80,6 +103,26 @@ public class NavigationItemAdapter extends RecyclerView.Adapter<NavigationItemAd
             }
         }
     }
+
+    class HeaderHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView tittle;
+        ImageView icon;
+
+        public HeaderHolder(View itemView) {
+            super(itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            if (clickListener != null) {
+                clickListener.itemClicked(view, getAdapterPosition());
+            }
+        }
+    }
+
 
     public interface ClickListener {
         public void itemClicked(View view, int position);

@@ -11,7 +11,7 @@ import android.view.MenuItem;
 
 
 import com.pyrotemplar.triviamaster.Adapters.FinalScoreListAdapter;
-import com.pyrotemplar.triviamaster.Objects.FinalScoreItemTemp;
+import com.pyrotemplar.triviamaster.Objects.FinalQuestionItem;
 import com.pyrotemplar.triviamaster.R;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class FinalScoreActivity extends AppCompatActivity {
     private final String LOG_TAG = FinalScoreActivity.class.getSimpleName();
     private RecyclerView questionListView;
     private FinalScoreListAdapter finalScoreListAdapter;
-    ArrayList<FinalScoreItemTemp> finalScoreItemsList;
+    ArrayList<FinalQuestionItem> finalQuestionItemsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ public class FinalScoreActivity extends AppCompatActivity {
         // Get ListView object from xml
         questionListView = (RecyclerView) findViewById(R.id.finalScoreQuestionList);
 
-        finalScoreItemsList =  getIntent().getParcelableArrayListExtra("finalScoreItemsList");
-        finalScoreListAdapter = new FinalScoreListAdapter(finalScoreItemsList);
+        finalQuestionItemsList =  getIntent().getParcelableArrayListExtra("finalQuestionItemsList");
+        finalScoreListAdapter = new FinalScoreListAdapter(finalQuestionItemsList);
         questionListView.setAdapter(finalScoreListAdapter);
         questionListView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 

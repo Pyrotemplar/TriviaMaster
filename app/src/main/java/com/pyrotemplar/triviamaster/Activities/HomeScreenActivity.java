@@ -78,7 +78,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "Score " + data.getIntExtra("score", 0));
                 Log.d(LOG_TAG, "numberOfQuestions " + data.getIntExtra("numberOfQuestions", 0));
                 Intent intent = new Intent(this, FinalScoreActivity.class);
-                intent.putParcelableArrayListExtra("finalScoreItemsList", data.getParcelableArrayListExtra("finalScoreItemsList"));
+                intent.putParcelableArrayListExtra("finalQuestionItemsList", data.getParcelableArrayListExtra("finalQuestionItemsList"));
                 intent.putExtra("score", data.getIntExtra("score", 0));
                 intent.putExtra("numberOfQuestions", data.getIntExtra("numberOfQuestions", 0));
                 Toast.makeText(HomeScreenActivity.this, "new intent from home to final score", Toast.LENGTH_SHORT).show();
