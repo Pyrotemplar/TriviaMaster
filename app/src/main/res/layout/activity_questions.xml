@@ -1,96 +1,146 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.pyrotemplar.triviamaster.Activities.QuestionsActivity">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_weight="1">
+        android:layout_weight=".5"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|left"
+            android:paddingLeft="@dimen/Padding"
+            android:text="Category"
+            android:id="@+id/questionCategoryView"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/questTextSize" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/questionProgressView"
+            android:gravity="center_horizontal|right"
+            android:paddingRight="@dimen/Padding"
+            android:text="5/10"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/questTextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="4">
 
         <TextView
             android:id="@+id/questionTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            android:background="#ccc"
-            android:text="New Text"
-            android:textColor="@color/accent_material_light"
-            android:textSize="@dimen/questTextSize" />
+            android:gravity="center"
+            android:text="Our on-demand training option will have you contributing on GitHub quicker than you can say Pull Request!"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonLayout"
-        android:layout_weight="1">
+        android:layout_weight="3"
+        android:baselineAligned="false">
 
-        <RadioGroup
-            android:id="@+id/answerGroup"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
-            android:layout_centerHorizontal="true">
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
 
-            <RadioButton
+            <Button
                 android:id="@+id/answerButton1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ccc"
-                android:text="New RadioButton"
-                android:textColor="@color/accent_material_light" />
+                android:layout_margin="@dimen/buttonMargin"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:paddingBottom="5dp"
+                android:text="answer 1"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/answerTextSize" />
 
-            <RadioButton
-                android:id="@+id/answerButton2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#ccc"
-                android:text="New RadioButton"
-                android:textColor="@color/accent_material_light" />
-
-            <RadioButton
+            <Button
                 android:id="@+id/answerButton3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ccc"
-                android:text="New RadioButton"
-                android:textColor="@color/accent_material_light" />
+                android:layout_margin="@dimen/buttonMargin"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="answer 3"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/answerTextSize" />
+        </LinearLayout>
 
-            <RadioButton
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/answerButton2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/buttonMargin"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="answer 2"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/answerTextSize" />
+
+            <Button
                 android:id="@+id/answerButton4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ccc"
-                android:text="New RadioButton"
-                android:textColor="@color/accent_material_light" />
+                android:layout_margin="@dimen/buttonMargin"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="answer 4"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/answerTextSize" />
+        </LinearLayout>
 
-        </RadioGroup>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/skipButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Skip" />
+            android:background="@color/colorPrimary"
+            android:text="Skip"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/answerTextSize" />
 
         <Button
             android:id="@+id/submitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Submit" />
+            android:background="@color/colorPrimary"
+            android:text="Submit"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/answerTextSize" />
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>
