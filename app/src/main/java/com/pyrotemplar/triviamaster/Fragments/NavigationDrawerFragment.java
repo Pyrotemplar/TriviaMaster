@@ -49,7 +49,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment im
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mUserLearnedDrawer = Boolean.valueOf(loadFromPreferences(getActivity(), KEY_USER_LEARNED_DRAWER, "false"));
+        mUserLearnedDrawer = Boolean.valueOf(loadFromPreferences(getActivity(), KEY_USER_LEARNED_DRAWER, "true"));
         if (savedInstanceState != null) {
             mFromSavedInstanceState = true;
         }

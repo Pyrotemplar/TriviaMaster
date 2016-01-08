@@ -58,7 +58,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
 
         questionDAO = new QuestionDAO(this);
         questionDAO.open();
-        listOfQuestions = questionDAO.getListOfQuestions(26, 10);
+        listOfQuestions = questionDAO.getListOfQuestions(1, 10);
         questionDAO.close();
 
         currentQuestion = 0;

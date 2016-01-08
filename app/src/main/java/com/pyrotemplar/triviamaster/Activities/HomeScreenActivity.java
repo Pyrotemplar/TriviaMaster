@@ -10,10 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.pyrotemplar.triviamaster.Database.QuestionDAO;
 import com.pyrotemplar.triviamaster.FetchTriviaTask;
 import com.pyrotemplar.triviamaster.Fragments.CategoryGridFragment;
 
 import com.pyrotemplar.triviamaster.Fragments.NavigationDrawerFragment;
+import com.pyrotemplar.triviamaster.Objects.Question;
 import com.pyrotemplar.triviamaster.R;
 
 /**
@@ -41,8 +43,9 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
-       // FetchTriviaTask test = new FetchTriviaTask(this);
-       // test.execute(getResources().getString(R.string.QuizQuestionByCategoryURL), "26", "10", "1");
+         addQuestionstoDb();
+        //FetchTriviaTask test = new FetchTriviaTask(this);
+        //test.execute(getResources().getString(R.string.QuizQuestionByCategoryURL), "26", "10", "1");
 
     }
 
@@ -89,4 +92,23 @@ public class HomeScreenActivity extends AppCompatActivity {
             }
         }
     }//onActivityResult
+
+    private void addQuestionstoDb() {
+        Question q = new Question();
+        QuestionDAO questionDAO = new QuestionDAO(this);
+        questionDAO.open();
+
+        for (int i = 1; i <= 10; i++) {
+            q.setCategoryID("1");
+            q.setQuestionID("" + i);
+            q.setQuestionText("question " + i);
+            q.setQuestionOption1("option 1");
+            q.setQuestionOption2("option 2");
+            q.setQuestionOption3("option 3");
+            q.setQuestionOption4("option 4");
+            q.setQuestionAnswer("2");
+            questionDAO.AddQuestion(q);
+        }
+        questionDAO.close();
+    }
 }
