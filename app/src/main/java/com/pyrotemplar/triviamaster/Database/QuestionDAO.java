@@ -67,8 +67,8 @@ public class QuestionDAO {
 
         String whereClause = DatabaseHelper.CATEGORY_ID + " = ?";
 
-        //Cursor cursor = database.query(DatabaseHelper.QUESTION_TABLE, columnNames, whereClause, new String[]{String.valueOf(category_id)}, null, null, null, String.valueOf(numberOfQuestions));
-        Cursor cursor = database.query(DatabaseHelper.QUESTION_TABLE, null, null, null, null, null, null, null);
+        Cursor cursor = database.query(DatabaseHelper.QUESTION_TABLE, columnNames, whereClause, new String[]{String.valueOf(category_id)}, null, null, null, String.valueOf(numberOfQuestions));
+       // Cursor cursor = database.query(DatabaseHelper.QUESTION_TABLE, null, null, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {

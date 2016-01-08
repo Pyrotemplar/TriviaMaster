@@ -41,8 +41,8 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
-        FetchTriviaTask test = new FetchTriviaTask(this);
-        test.execute(getResources().getString(R.string.CategoryListURL), "26", "10", "1");
+       // FetchTriviaTask test = new FetchTriviaTask(this);
+       // test.execute(getResources().getString(R.string.QuizQuestionByCategoryURL), "26", "10", "1");
 
     }
 

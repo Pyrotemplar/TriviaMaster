@@ -21,11 +21,10 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     private final String LOG_TAG = QuestionsActivity.class.getSimpleName();
 
     TextView questionTextView;
-    RadioGroup answerGroup;
-    RadioButton answerButton1;
-    RadioButton answerButton2;
-    RadioButton answerButton3;
-    RadioButton answerButton4;
+    Button answerButton1;
+    Button answerButton2;
+    Button answerButton3;
+    Button answerButton4;
     Button submitButton;
     Button skipButton;
     int numberOfQuestions = 10;
@@ -44,15 +43,18 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_questions);
 
         questionTextView = (TextView) findViewById(R.id.questionTextView);
-        answerButton1 = (RadioButton) findViewById(R.id.answerButton1);
-        answerButton2 = (RadioButton) findViewById(R.id.answerButton2);
-        answerButton3 = (RadioButton) findViewById(R.id.answerButton3);
-        answerButton4 = (RadioButton) findViewById(R.id.answerButton4);
-        answerGroup = (RadioGroup) findViewById(R.id.answerGroup);
+        answerButton1 = (Button) findViewById(R.id.answerButton1);
+        answerButton2 = (Button) findViewById(R.id.answerButton2);
+        answerButton3 = (Button) findViewById(R.id.answerButton3);
+        answerButton4 = (Button) findViewById(R.id.answerButton4);
         skipButton = (Button) findViewById(R.id.skipButton);
         submitButton = (Button) findViewById(R.id.submitButton);
         skipButton.setOnClickListener(this);
         submitButton.setOnClickListener(this);
+        answerButton1.setOnClickListener(this);
+        answerButton2.setOnClickListener(this);
+        answerButton3.setOnClickListener(this);
+        answerButton4.setOnClickListener(this);
 
         questionDAO = new QuestionDAO(this);
         questionDAO.open();
@@ -72,14 +74,13 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         String userAnswer = "";
         FinalQuestionItem finalQuestionItem = new FinalQuestionItem();
 
-        int userSelection = answerGroup.getCheckedRadioButtonId();
-        if (userSelection == answerButton1.getId()) {
+        if (!answerButton1.isEnabled()) {
             userAnswer = answerButton1.getText().toString();
-        } else if (userSelection == answerButton2.getId()) {
+        } else if (!answerButton2.isEnabled()) {
             userAnswer = answerButton2.getText().toString();
-        } else if (userSelection == answerButton3.getId()) {
+        } else if (!answerButton3.isEnabled()) {
             userAnswer = answerButton3.getText().toString();
-        } else if (userSelection == answerButton4.getId()) {
+        } else if (!answerButton4.isEnabled()) {
             userAnswer = answerButton4.getText().toString();
         } else {
             userAnswer = "";
@@ -116,7 +117,12 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void updateUI() {
-        answerGroup.clearCheck();
+
+        answerButton1.setEnabled(true);
+        answerButton2.setEnabled(true);
+        answerButton3.setEnabled(true);
+        answerButton4.setEnabled(true);
+
         questionTextView.setText(question.getQuestionText());
         answerButton1.setText(question.getQuestionOption1());
         answerButton2.setText(question.getQuestionOption2());
@@ -136,13 +142,37 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
 
-        if (v.getId() == R.id.submitButton) {
-            questionLogic();
-        } else if (v.getId() == R.id.skipButton) {
-            questionLogic();
+        if (v.getId() == R.id.answerButton1) {
+            answerButton1.setEnabled(false);
+           // answerButton1.setBackground(getResources().getColor(R.color.colorPrimaryLight));
+            answerButton2.setEnabled(true);
+            answerButton3.setEnabled(true);
+            answerButton4.setEnabled(true);
+        } else if (v.getId() == R.id.answerButton2) {
+            answerButton1.setEnabled(true);
+            answerButton2.setEnabled(false);
+            answerButton3.setEnabled(true);
+            answerButton4.setEnabled(true);
+        } else if (v.getId() == R.id.answerButton3) {
+            answerButton1.setEnabled(true);
+            answerButton2.setEnabled(true);
+            answerButton3.setEnabled(false);
+            answerButton4.setEnabled(true);
+        } else if (v.getId() == R.id.answerButton4) {
+            answerButton1.setEnabled(true);
+            answerButton2.setEnabled(true);
+            answerButton3.setEnabled(true);
+            answerButton4.setEnabled(false);
         }
 
-        updateUI();
+        if (v.getId() == R.id.submitButton) {
+            questionLogic();
+            updateUI();
+        } else if (v.getId() == R.id.skipButton) {
+            questionLogic();
+            updateUI();
+        }
+
     }
 
 
@@ -158,5 +188,28 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     private void NewQuestion(int position) {
         question = listOfQuestions.get(position);
         currentQuestion++;
+    }
+
+    private void toggleButtons() {
+        if (answerButton1.isEnabled())
+            answerButton1.setEnabled(false);
+        else
+            answerButton1.setEnabled(true);
+
+        if (answerButton2.isEnabled())
+            answerButton2.setEnabled(false);
+        else
+            answerButton2.setEnabled(false);
+
+        if (answerButton3.isEnabled())
+            answerButton3.setEnabled(false);
+        else
+            answerButton3.setEnabled(true);
+
+        if (answerButton4.isEnabled())
+            answerButton4.setEnabled(false);
+        else
+            answerButton4.setEnabled(true);
+
     }
 }

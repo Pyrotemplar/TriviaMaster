@@ -4,4 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="navigationDrawerWidth">280dp</dimen>
     <dimen name="questTextSize">32sp</dimen>
+    <dimen name="buttonMargin">5dp</dimen>
+    <dimen name="answerTextSize">20sp</dimen>
+    <dimen name="Padding">10sp</dimen>
 </resources>
