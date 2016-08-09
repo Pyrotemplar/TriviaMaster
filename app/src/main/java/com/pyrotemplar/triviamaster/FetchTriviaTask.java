@@ -62,7 +62,7 @@ public class FetchTriviaTask extends AsyncTask<String, Void, ArrayList<Question>
 
             Log.d(LOG_TAG, "Built URI " + URL);
 
-            // Create the request to OpenWeatherMap, and open the connection
+            // Create the request and open the connection
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.setRequestProperty("X-Mashape-Key", context.getResources().getString(R.string.API_KEY_TESTING));
